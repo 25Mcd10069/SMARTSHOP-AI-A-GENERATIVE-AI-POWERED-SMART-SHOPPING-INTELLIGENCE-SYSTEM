@@ -1,0 +1,14 @@
+services:
+  shopsmart-web:
+    build: .
+    container_name: shopsmart_ai_app
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=shopsmart_docker_secret_key_2026
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
